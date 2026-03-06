@@ -87,18 +87,18 @@ with st.expander("📖 累積確率表", expanded=False):
     st.dataframe(pd.DataFrame(prob_data), use_container_width=True, height=150)
 
 st.sidebar.header("💰 設定")
-initial_bankroll = st.sidebar.number_input("軍資金", value=500000, step=50000)
+initial_bankroll = st.sidebar.number_input("軍資金", value=300000, step=50000)
 trials = st.sidebar.number_input("セット数", value=100, step=10)
 stop_on_bankrupt = st.sidebar.toggle("破産で終了", value=True)
 
 with st.sidebar.expander("🎯 戦略"):
     wait_spins = st.number_input("見送", value=10)
-    b1 = (st.number_input("額1", value=2500), st.number_input("回1", value=20))
+    b1 = (st.number_input("額1", value=2500), st.number_input("回1", value=30))
     b2 = (st.number_input("額2", value=5000), st.number_input("回2", value=20))
     b3 = (st.number_input("額3", value=7500), st.number_input("回3", value=10))
     b4 = (st.number_input("額4", value=10000), st.number_input("回4", value=10))
-    b5 = (st.number_input("額5", value=15000), st.number_input("回5", value=10))
-    b6 = (st.number_input("額6", value=20000), st.number_input("回6", value=10))
+    b5 = (st.number_input("額5", value=0), st.number_input("回5", value=0))
+    b6 = (st.number_input("額6", value=0), st.number_input("回6", value=0))
 
 if st.button("🚀 実行", type="primary", use_container_width=True):
     stages = [(0, wait_spins), b1, b2, b3, b4, b5, b6]
@@ -118,3 +118,4 @@ if st.button("🚀 実行", type="primary", use_container_width=True):
 
     st.dataframe(pd.DataFrame(session_logs).set_index("No"), use_container_width=True, height=200)
     st.line_chart(pd.DataFrame(cumulative_history, columns=["残高"]), height=200)
+
