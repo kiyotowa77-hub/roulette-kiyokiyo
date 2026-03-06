@@ -97,7 +97,7 @@ with st.sidebar.expander("🎯 戦略"):
     b2 = (st.number_input("額2", value=5000), st.number_input("回2", value=20))
     b3 = (st.number_input("額3", value=7500), st.number_input("回3", value=10))
     b4 = (st.number_input("額4", value=10000), st.number_input("回4", value=10))
-    b5 = (st.number_input("額5", value=0), st.number_input("回5", value=0))
+    b5 = (st.number_input("額5", value=1), st.number_input("回5", value=1000))
     b6 = (st.number_input("額6", value=0), st.number_input("回6", value=0))
 
 if st.button("🚀 実行", type="primary", use_container_width=True):
@@ -118,5 +118,6 @@ if st.button("🚀 実行", type="primary", use_container_width=True):
 
     st.dataframe(pd.DataFrame(session_logs).set_index("No"), use_container_width=True, height=200)
     st.line_chart(pd.DataFrame(cumulative_history, columns=["残高"]), height=200)
+
 
 
