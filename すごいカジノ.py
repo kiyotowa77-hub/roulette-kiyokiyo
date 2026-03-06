@@ -88,7 +88,7 @@ with st.expander("📖 累積確率表", expanded=False):
 
 st.sidebar.header("💰 設定")
 initial_bankroll = st.sidebar.number_input("軍資金", value=300000, step=50000)
-trials = st.sidebar.number_input("セット数", value=100, step=10)
+trials = st.sidebar.number_input("セット数", value=15, step=10)
 stop_on_bankrupt = st.sidebar.toggle("破産で終了", value=True)
 
 with st.sidebar.expander("🎯 戦略"):
@@ -118,4 +118,5 @@ if st.button("🚀 実行", type="primary", use_container_width=True):
 
     st.dataframe(pd.DataFrame(session_logs).set_index("No"), use_container_width=True, height=200)
     st.line_chart(pd.DataFrame(cumulative_history, columns=["残高"]), height=200)
+
 
